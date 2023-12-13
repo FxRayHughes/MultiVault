@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.maplex.multivault.impl.GemsEconomyHook;
+import top.maplex.multivault.impl.HookVault;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -38,6 +39,12 @@ public final class MultiVault extends JavaPlugin {
         // Register money types
         if (Bukkit.getPluginManager().isPluginEnabled("GemsEconomy")) {
             new GemsEconomyHook().hook();
+        }
+
+        if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+            HookVault hookVault = new HookVault();
+            registerMoneyType(hookVault);
+            mainMoneyType = hookVault;
         }
     }
 
