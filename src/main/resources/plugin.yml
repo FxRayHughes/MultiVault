@@ -1,0 +1,3 @@
+name: MultiVault
+version: '${version}'
+main: top.maplex.multivault.MultiVault
